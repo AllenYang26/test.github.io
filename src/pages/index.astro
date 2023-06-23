@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content'
+import Base from '../layouts/base.astro'
+
+const docs = await getCollection('doc')
+// const latestPosts = posts.sort((a, b) => +b.data.publishDate - +a.data.publishDate).filter(p => !p.data.draft)
+---
+
+<Base>
+  <div class="prose">
+    <h1>Hello World</h1>
+    <ul>
+      {docs.map(doc => <li><a href={'/doc/' + doc.slug}>{doc.data.title}</a></li>)}
+    </ul>
+  </div>
+</Base>
